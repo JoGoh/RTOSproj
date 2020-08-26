@@ -1,0 +1,5 @@
+Usage:
+
+> Generator.exe -f ]output filename without extension] -s [Font Size] [Input Font file]
+
+> Generator.exe -f sSerial -s 12 arialbd.ttf

@@ -1,0 +1,156 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="Beacon" target="8" version="2">
+  <project Name="Beacon">
+    <configuration
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F103RB"
+      arm_architecture="v7M"
+      arm_core_type="Cortex-M3"
+      arm_endian="Little"
+      arm_fpu_type="None"
+      arm_interwork="No"
+      arm_linker_heap_size="256"
+      arm_linker_process_stack_size="64"
+      arm_linker_stack_size="512"
+      arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00020000;RAM;0x20000000;0x00005000"
+      arm_target_debug_interface_type="ADIv5"
+      arm_target_device_name="STM32F103RB"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="STM32F10X_MD;STM32F103xB;__STM32F1xx_FAMILY;__STM32F103_SUBFAMILY;ARM_MATH_CM3;FLASH_PLACEMENT=1"
+      c_user_include_directories="../src/App/IPS;../src/App/UWB;../src/App/LCD;../src/App/Shell;../src/BSP;../src/BSP/Clock;../src/BSP/MCU/CMSIS_4/CMSIS/Include;../src/BSP/MCU/STM32F1xx/CMSIS/Device/Include;../src/BSP/SPIM;../src/BSP/Timer;../src/BSP/UART;../Lib/Common/Inc;$(ProjectDir)/CMSIS_4/CMSIS/Include;$(ProjectDir)/STM32F1xx/CMSIS/Device/Include"
+      debug_register_definition_file="$(ProjectDir)/STM32F103xx_Registers.xml"
+      debug_target_connection="J-Link"
+      gcc_entry_point="Reset_Handler"
+      linker_memory_map_file="$(ProjectDir)/STM32F103RB_MemoryMap.xml"
+      linker_output_format="hex"
+      linker_printf_fp_enabled="Double"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
+      macros="DeviceHeaderFile=$(PackagesDir)/STM32F1xx/CMSIS/Device/Include/stm32f10x.h;DeviceLibraryIdentifier=M3l;DeviceSystemFile=$(PackagesDir)/STM32F1xx/CMSIS/Device/Source/system_stm32f10x.c;DeviceVectorsFile=$(PackagesDir)/STM32F1xx/Source/STM32F103xx_Vectors.s;DeviceFamily=STM32F1xx;DeviceSubFamily=STM32F103;Target=STM32F103RB;Placement=Flash;STLport=No"
+      package_dependencies="STM32F1xx"
+      project_directory=""
+      project_type="Executable"
+      target_reset_script="Reset();"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <folder Name="Script Files">
+      <configuration Name="Common" macros="STLport=No" />
+      <file file_name="../Src/BSP/MCU/STM32F1xx_Target.js" />
+    </folder>
+    <folder Name="Source Files">
+      <configuration
+        Name="Common"
+        filter="c;cpp;cxx;cc;h;s;asm;inc"
+        macros="STLport=No" />
+      <folder Name="BSP">
+        <file file_name="../Src/BSP/Retarget.c" />
+        <file file_name="../Src/BSP/Hal.c" />
+        <file file_name="../Src/BSP/Hal.h" />
+        <file file_name="../Src/BSP/BSP.c" />
+        <file file_name="../Src/BSP/BSP.h" />
+        <file file_name="../Src/BSP/IRQ.c" />
+        <file file_name="../Src/BSP/IRQ.h" />
+        <folder Name="CMSIS Files">
+          <configuration Name="Common" macros="STLport=No" />
+          <file file_name="../Src/BSP/MCU/system_stm32f1xx.c" />
+        </folder>
+      </folder>
+      <folder Name="App">
+        <file file_name="../Src/main.c" />
+      </folder>
+      <folder Name="BSP::UART">
+        <file file_name="../Src/BSP/UART/Serial.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+          <configuration Name="Release" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../Src/BSP/UART/Uart.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+          <configuration Name="Release" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../Lib/SERIAL_F1_LIB.a" />
+      </folder>
+      <folder Name="BSP::SPIM">
+        <file file_name="../Src/BSP/SPIM/spim.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+          <configuration Name="Release" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../Lib/SPIM_F1_LIB.a">
+          <configuration Name="Debug" build_exclude_from_build="No" />
+        </file>
+        <file file_name="../../17.UWB_Vehicle/src/BSP/SPIM.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../../17.UWB_Vehicle/src/BSP/Spim.h">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+        </file>
+      </folder>
+      <folder Name="Lib::UWB">
+        <file file_name="../Src/App/UWB/compiler.h" />
+        <file file_name="../Src/App/UWB/deca_device.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+          <configuration Name="Release" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../Src/App/UWB/deca_device_api.h" />
+        <file file_name="../Src/App/UWB/deca_param_types.h" />
+        <file file_name="../Src/App/UWB/deca_params_init.c">
+          <configuration Name="Debug" build_exclude_from_build="Yes" />
+          <configuration Name="Release" build_exclude_from_build="Yes" />
+        </file>
+        <file file_name="../Src/App/UWB/deca_regs.h" />
+        <file file_name="../Src/App/UWB/deca_types.h" />
+        <file file_name="../Src/App/UWB/deca_version.h" />
+        <file file_name="../Lib/UWB_F1_LIB.a" />
+      </folder>
+      <folder Name="BSP::Clock">
+        <file file_name="../Src/BSP/Clock/Clock.c" />
+      </folder>
+    </folder>
+    <folder Name="System Files">
+      <configuration Name="Common" macros="STLport=No" />
+      <file file_name="../Src/BSP/MCU/STM32F1xx_Startup.s" />
+      <file file_name="../Src/BSP/MCU/STM32F103xx_Vectors.s" />
+      <file file_name="../Src/BSP/MCU/thumb_crt0.s" />
+    </folder>
+    <configuration
+      Name="Debug"
+      arm_linker_heap_size="256"
+      arm_linker_process_stack_size="512"
+      arm_linker_stack_size="1024"
+      c_preprocessor_definitions="_STM32_NUCLEO_F103RB;HAL_PCD_MODULE_ENABLED;_DEBUG"
+      c_user_include_directories=".;..\\Src;..\\Src\\BSP\\MCU;..\\Src\\BSP;..\\Src\\BSP\\MCU\\CMSIS_4\\CMSIS\\Include;..\\Src\\BSP\\MCU\\STM32F1xx\\CMSIS\\Device\\Include;..\\Lib\\Common\\Inc;..\\Src\\App\\USB Device;..\\Src\\App\\USB Device\\Class\\CustomHID;..\\Src\\App\\USB Device\\Core;..\\Src\\BSP\\USB;..\\Src\\BSP\\UART;..\\Src\\BSP\\Dma;..\\Src\\App\\FreeRTOS;..\\Src\\App\\FreeRTOS\\Inc;..\\Src\\BSP\\CAN;..\\Src\\App\\UWB;..\\Src\\BSP\\Clock"
+      debug_register_definition_file="../Src/BSP/MCU/STM32F103xx_Registers.xml"
+      gcc_enable_all_warnings="Yes"
+      gcc_optimization_level="Debug"
+      link_symbol_definitions="__putchar=x_putchar"
+      linker_memory_map_file="../Src/BSP/MCU/STM32F103RB_MemoryMap.xml"
+      linker_section_placement_file="../Src/BSP/MCU/flash_placement.xml"
+      target_script_file="../Src/BSP/MCU/STM32F1xx_Target.js" />
+    <configuration
+      Name="Release"
+      arm_linker_heap_size="512"
+      arm_linker_process_stack_size="512"
+      arm_linker_stack_size="1024"
+      arm_target_interface_type="SWD"
+      c_preprocessor_definitions="_STM32_NUCLEO_F103RB;HAL_PCD_MODULE_ENABLED"
+      c_user_include_directories=".;..\\Src;..\\Src\\BSP\\MCU;..\\Src\\BSP;..\\Src\\BSP\\MCU\\CMSIS_4\\CMSIS\\Include;..\\Src\\BSP\\MCU\\STM32F1xx\\CMSIS\\Device\\Include;..\\Lib\\Common\\Inc;..\\Src\\App\\USB Device;..\\Src\\App\\USB Device\\Class\\CustomHID;..\\Src\\App\\USB Device\\Core;..\\Src\\BSP\\USB;..\\Src\\BSP\\UART;..\\Src\\BSP\\Dma;..\\Src\\App\\FreeRTOS;..\\Src\\App\\FreeRTOS\\Inc;..\\Src\\BSP\\CAN;..\\Src\\App\\UWB;..\\Src\\BSP\\Clock"
+      debug_enable_RTT="No"
+      debug_leave_target_running="Yes"
+      debug_register_definition_file="../Src/BSP/MCU/STM32F103xx_Registers.xml"
+      debug_target_connection="J-Link"
+      gcc_optimization_level="Level 3"
+      linker_memory_map_file="../Src/BSP/MCU/STM32F103RB_MemoryMap.xml"
+      linker_section_placement_file="../Src/BSP/MCU/flash_placement.xml"
+      showLog="No"
+      target_script_file="../Src/BSP/MCU/STM32F1xx_Target.js" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
