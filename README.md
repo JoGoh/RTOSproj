@@ -5,4 +5,5 @@ culminating in an autonomous obstacle avoiding vehicle with
 wireless control feature to an external host control.
 Wireless control supports both manual control of the vehicle, and an indoor positioning system, by planting specific coordinates for it to "home" to.
 The whole vehicle's firmware is optimised in RTOS environment, to satisfy the delicate timing of the various tasks.
+Templates for certain files were provided to expedite the process of developing the autonomous vehicle with Wi-Fi connectivity in the RTOS environment.
 
